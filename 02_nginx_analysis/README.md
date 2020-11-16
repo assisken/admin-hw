@@ -24,7 +24,7 @@
 Используя curl:
 
 ```bash
-curl https://raw.githubusercontent.com/assisken/admin-hw/master/02_nginx_analysis/script.sh | bash -s access.log all 5
+curl --silent https://raw.githubusercontent.com/assisken/admin-hw/master/02_nginx_analysis/script.sh | bash -s access.log all 5
 ```
 
 С установкой и работы, используя демонстрационный access.log:
