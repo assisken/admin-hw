@@ -3,6 +3,18 @@
 - [Первое задание](#первое-задание)
 - [Второе задание](#второе-задание)
 
+## Установка
+
+```bash
+git clone https://github.com/assisken/admin-hw.git
+cd 03_auth
+vagrant up --provision
+
+# Если не запустилось с первого раза
+vagrant halt
+vagrant up --provision
+```
+
 ## Первое задание
 
 <details>
@@ -23,6 +35,17 @@
 
 </details>
 
+## Как работает
+
+1. [Создание нескольких пользователей](https://github.com/assisken/admin-hw/blob/master/03_auth/playbook.yml#L23-L40)
+2. [Создание группы admin](https://github.com/assisken/admin-hw/blob/master/03_auth/playbook.yml#L12-L14)
+3. [Включение пользователя root в группу admin](https://github.com/assisken/admin-hw/blob/master/03_auth/playbook.yml#L16-L21)
+4. Запрет всем пользователям, кроме admin вход в систему по выходным:
+[pam](https://github.com/assisken/admin-hw/blob/master/03_auth/templates/pam-sshd.j2)
+[script](https://github.com/assisken/admin-hw/blob/master/03_auth/templates/admin-weekends.sh)
+[playbook](https://github.com/assisken/admin-hw/blob/master/03_auth/playbook.yml#L53-L67)
+5. С учётом праздничных дней. *Нету, такое на баше писать стрёмно.*
+
 ## Второе задание
 
 <details>
@@ -35,3 +58,10 @@
     не выдавая прав более, чем для этого нужно;
 
 </details>
+
+## Как работает
+
+1. [Установка docker](https://github.com/assisken/admin-hw/blob/master/03_auth/playbook.yml#L70-L73)
+2. Выдача прав на работу с docker, возможность перезапускать демон.
+[sudoers](https://github.com/assisken/admin-hw/blob/master/03_auth/templates/docker-sudoers.j2)
+[playbook](https://github.com/assisken/admin-hw/blob/master/03_auth/playbook.yml#L81-L105)
