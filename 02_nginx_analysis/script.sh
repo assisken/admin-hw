@@ -26,7 +26,6 @@ fi
 
 # 5. автоматически завершаться, если в теле скрипта будет обнаружена ошибка при его выполнении;
 # https://mads-hartmann.com/2017/06/16/writing-readable-bash-scripts.html#the-header-ceremony
-# set -u
 set -e
 set -o pipefail
 
