@@ -1,4 +1,4 @@
-# Третья лабораторная работа
+# Четвертая лабораторная работа
 
 ## Установка
 
@@ -6,10 +6,6 @@
 git clone https://github.com/assisken/admin-hw.git
 cd 04_raid0
 ansible-galaxy install -r requirements.yml
-VAGRANT_EXPERIMENTAL="disks" vagrant up --provision
-
-# Если не запустилось с первого раза
-vagrant halt
 VAGRANT_EXPERIMENTAL="disks" vagrant up --provision
 ```
 
