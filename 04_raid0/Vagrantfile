@@ -13,7 +13,6 @@ Vagrant.configure("2") do |config|
         vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', n + 1, '--device', 0, '--type', 'hdd', '--medium', path]
       end
     end
-
   end
 
   config.vm.provision :ansible do |ansible|
