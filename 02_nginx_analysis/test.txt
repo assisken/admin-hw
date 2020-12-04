@@ -1,6 +1,0 @@
-4
-nz 47338 0.0 0.0 7196 2964 pts/11 S+ 17:15 0:00 /bin/bash ./script.sh test 
-nz 47339 0.0 0.0 7196 456 pts/11 S+ 17:15 0:00 /bin/bash ./script.sh test 
-nz 47340 0.0 0.0 7196 1824 pts/11 S+ 17:15 0:00 /bin/bash ./script.sh test 
-nz 47342 0.0 0.0 6372 2312 pts/11 S+ 17:15 0:00 grep ./script.sh
-4
