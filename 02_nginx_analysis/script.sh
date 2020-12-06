@@ -50,6 +50,15 @@ else
 	ROW_COUNT=$DEFAULT_ROWCOUNT
 fi
 
+temp=/tmp/log_analyser_dates.tmp
+current_data=$(date "+%d/%b/%Y:%T")
+current_data_sec=$(date +%s)
+my_str="ANALYZED "$current_data
+
+
+# Считаем количество новых записей в логе
+echo "Начат подсчет новых записей"
+new_records_count=$( tac $1 | awk '{  if ( $1=="ANALYZED" ) exit 0 ; else print }' | wc -l || true )
 
 echo "Current date: `date --date=@$CURRENT_DATETIME \"+%d/%b/%Y:%T\"`"
 
@@ -58,6 +67,12 @@ if [[ -f $ANALYSIS_HISTORY_FILE ]]; then
 	LAST_DATETIME=$(cat $ANALYSIS_HISTORY_FILE | tail -n 1)
 	last_date=$(date --date=@$LAST_DATETIME "+%d/%b/%Y:%T")
 	echo "Last analysis date: $last_date"
+fi
+
+if [ $new_records_count -le 0 ]; then
+  echo "No new data from $last_date"
+  echo $current_data_sec >> $ANALYSIS_HISTORY_FILE
+  exit 0
 fi
 
 # Count new records
@@ -143,5 +158,6 @@ case $2 in
 esac
 
 echo "$CURRENT_DATETIME" >> $ANALYSIS_HISTORY_FILE
+echo $my_str >> $INPUT_FILE
 
 exit 0
